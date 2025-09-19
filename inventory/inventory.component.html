@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ASSET INVENTORY LIST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="inventory.component.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h3><u>ASSET INVENTORY LIST</u></h3>
+
+    <div class="buttonadd">
+        <button type="submit" class="btn btn-primary" routerlink="/assets/add" (click)="goToAddAssets()">Add Asset<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+</svg></button>
+    </div>
+
+    <div class="deletebutton">
+        <button type="submit" class="btn btn-primary" (click)="goToDeleteAssets()" routerLink="/assets/delete">Remove Asset<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+  <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
+</svg></button></div>
+
+    <div class="back">
+        <button type="submit" class="btn btn-primary" (click)="goToDashboard()" routerlink="/dashboard">To Dashboard</button>
+    </div>
+
+
+    <p-table class="custom-table" [value]="assets$ | async " [paginator]="true" [rows]="10">
+        <ng-template #header>
+
+            <tr>
+                <th pSortableColumn="id">ID
+                    <p-sortIcon field="id"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="name">NAME
+                    <p-sortIcon field="name"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="serialNumber">SERIAL NUMBER
+                    <p-sortIcon field="serialNumber"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="department">DEPARTMENT
+                    <p-sortIcon field="department"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="dateOfIssue">DATE OF ISSUE
+                    <p-sortIcon field="dateOfIssue"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="warrantyDate">WARRANTY DATE
+                    <p-sortIcon field="warrantyDate"></p-sortIcon>
+                </th>
+
+
+                <th pSortableColumn="userId">USER ID
+                    <p-sortIcon field="userId"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="user">USER
+                    <p-sortIcon field="user"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="status">STATUS
+                    <p-sortIcon field="status"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="assetTypeId">ASSET TYPE ID
+                    <p-sortIcon field="assetTypeId"></p-sortIcon>
+                </th>
+
+                <th pSortableColumn="assetType">ASSET TYPE
+                    <p-sortIcon field="assetType"></p-sortIcon>
+                </th>
+
+            </tr>
+
+        </ng-template>
+
+        <ng-template #body let-asset>
+            <tr>
+                <td (click)="goToDeleteAssets()">{{ asset.id }}</td>
+                <td>{{ asset.name}}</td>
+                <td>{{ asset.serialNumber }}</td>
+                <td>{{ asset.department }}</td>
+                <td>{{ asset.dateOfIssue | date }}</td>
+                <td>{{ asset.warrantyDate | date }}</td>
+                <td>{{ asset.userId }}</td>
+                <td>{{ asset.user }}</td>
+                <td>{{ asset.status }}</td>
+                <td>{{ asset.assetTypeId }}</td>
+                <td>{{ asset.assetType }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <!-- component-a.html -->
+    <!-- <button (click)="exportData()">Export Columns</button> -->
+
+    <button class="delete-button" (click)="goToDeleteAssets()">Delete Asset</button>
+</body>

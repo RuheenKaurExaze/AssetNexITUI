@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Guides</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+</head>
+<div #mapContainer class="map-container" style="width: 100%; height: 500px;">
+</div>
+
+<p-table class="custom-table" [value]="locationss$ | async" [paginator]="true" [rows]="50">
+    <ng-template #header>
+        <tr>
+            <th pSortableColumn="id">Id
+                <p-sortIcon field="id"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="serialNumber">Serial Number
+                <p-sortIcon field="serialNumber"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="assetTypeId">Asset Type ID
+                <p-sortIcon field="assetTypeId"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="assetType">Asset Type
+                <p-sortIcon field="assetType"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="status">Status
+                <p-sortIcon field="status"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="location">Location
+                <p-sortIcon field="location"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="lastCheckedOut">Last Checked Out
+                <p-sortIcon field="lastCheckedOut"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="latitude">Latitude
+                <p-sortIcon field="latitude">
+                </p-sortIcon>
+            </th>
+
+            <th pSortableColumn="longitude">Longitude
+                <p-sortIcon field="longitude">
+                </p-sortIcon>
+            </th>
+
+            <th pSortableColumn="name">Name
+                <p-sortIcon field="name"></p-sortIcon>
+            </th>
+
+
+        </tr>
+    </ng-template>
+
+
+
+
+    <ng-template #body let-locationss$>
+        <tr (click)="showOnMap(locationss$)">
+
+            <td>{{ locationss$.id }}</td>
+            <td>{{locationss$.serialNumber }}</td>
+            <td>{{locationss$.assetTypeId}}</td>
+            <td>{{ locationss$.assetType }}</td>
+            <td>{{ locationss$.status }}</td>
+            <td>{{ locationss$.location }}</td>
+            <td>{{ locationss$.lastCheckedOut | date}}</td>
+            <td>{{ locationss$.latitude }}</td>
+            <td>{{ locationss$.longitude }}</td>
+            <td>{{ locationss$.name }}</td>
+
+        </tr>
+
+    </ng-template>
+</p-table>
+
+<body>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoicnVoZWVuIiwiYSI6ImNtZnAxYjdodTAydDcya3M3MjE2ejFyY2MifQ.4L8TpiIAv0JRXDFbcWLUuA';
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/standard',
+            projection: 'globe',
+            zoom: 1,
+            center: [30, 15],
+
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+        map.scrollZoom.disable();
+        m
+
+        map.on('style.load', () => {
+            map.setFog({});
+        });
+    </script>
+
+</body>
+
+</html>
