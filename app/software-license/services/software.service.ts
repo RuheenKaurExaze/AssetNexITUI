@@ -20,7 +20,7 @@ getSoftwareLicense() : Observable<SoftwareLicense[]>//get all
 
   {
 // return this.http.get<SoftwareLicense[]>(`${environment.apibaseUrl}/api/softwarelicense`);
-return this.http.get<SoftwareLicense[]>('api/softwarelicense');
+return this.http.get<SoftwareLicense[]>('/softwarelicense');
 
   }
 

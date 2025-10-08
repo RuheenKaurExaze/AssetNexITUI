@@ -12,6 +12,8 @@ import { updateSupport } from '../models/updateSupport.model';
 })
 export class SupportService {
 
+catchError:any;
+throwError:any;
 
 constructor( private http : HttpClient) { }
 
@@ -20,15 +22,17 @@ createSupport (Data: addSupport): Observable<Support[]>
 
 {
   return this.http.post<Support[]>(`${environment.apibaseUrl}/api/newsupport`, Data);
+
+
 }
 
 //get
 getAllSupport(): Observable<Support[]>
 {
   return this. http.get<Support[]>(`${environment.apibaseUrl}/api/newsupport`);
+  // Add error handling in your service
 }
 
-//getbyid
 getSupportById(id:string) : Observable<Support[]>
 
   {
@@ -58,9 +62,3 @@ return this.http.put<addSupport[]>(`${environment.apibaseUrl}/api/support/${id}`
 
 
   
-//   // error : (error)=>{
-
-//   // }
-
-
-// //to connect apis and angualr we use http, we also will have to observable , a promise that we have to subscribe to 

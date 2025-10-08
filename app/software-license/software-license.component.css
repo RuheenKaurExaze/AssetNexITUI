@@ -9,12 +9,13 @@ td {
     border: 1.5px solid rgb(14, 13, 13);
     border-collapse: collapse;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 h3 {
     text-align: center;
     font-size: 18px;
+    margin-top: 80px;
     font-style: bold;
     font-weight: 200px;
 }
@@ -27,28 +28,29 @@ table tr:nth-child(even) {
     background-color: #928181;
 }
 
-button {
+th {
+    gap: 10px;
+    width: 10%;
+}
+
+tr:hover {
+    background-color: #eea263;
+    transition-duration: 0.2s;
+}
+
+.buttonrow {
     display: flex;
-    margin-right: 10px;
-    margin-top: 20px;
-    width: 200px;
-    padding: 10px 35px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    text-align: center;
-    margin-left: 1100px;
-    cursor: pointer;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    border: none;
-    background-color: #f0842c;
-    color: rgb(10, 1, 1);
-    transition: 0.3s;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 1000px;
+    color: rgb(250, 247, 247);
+    row-gap: 10px;
+    gap: 10px;
 }
 
 button:hover {
-    background-color: #f3a75f;
+    background-color: #f07e13;
     color: rgb(5, 5, 5);
     transition: 0.3s;
 }
@@ -57,12 +59,104 @@ button a {
     color: black
 }
 
-.back {
-    width: 60px;
-    margin-left: -1100px;
-    padding: 10px 20px;
-    margin-top: -50px;
+button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    width: 350px;
+    height: 50px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.highlight {
+    color: #fc7e2a;
+    font-weight: 500px;
+}
+
+.navbar {
     display: flex;
-    position: relative;
-    background-color: #f0842c;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    background-color: #fdfcfc;
+    color: #000000;
+    margin-left: -20px;
+    position: fixed;
+    margin-top: 10px;
+    top: -10px;
+    left: 0;
+    height: 100px;
+    width: 1500px;
+    border-radius: 25px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000000;
+    margin: 0;
+}
+
+.logo a .highlight {
+    color: #f0842c;
+}
+
+.logo a {
+    color: black
+}
+
+.highlight {
+    color: #f0842c;
+}
+
+.below {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+    color: #000000;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.2;
+}
+
+.nav-left {
+    display: flex;
+    margin-left: -50px;
+    margin-top: -20px;
+    position: absolute;
+}
+
+.name {
+    color: #000000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-left: -150px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    font-weight: bold;
+    margin-right: 290px;
+}
+
+.nav-links a:hover {
+    color: #f0842c;
 }

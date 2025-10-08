@@ -76,8 +76,16 @@ export class UinewComponent implements OnInit {
     this.router.navigateByUrl(route);
   }
 
+goToLanding(){
+  this.router.navigateByUrl('/landing');
+}
+
+     isSidebarCollapsed = false;
 
 
+  toggleSidebar(): void {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 
 
 }

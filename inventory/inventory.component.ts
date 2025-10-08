@@ -23,6 +23,7 @@ import { LocationLiveTracking } from '../live-tracking/locationlt.model';
 export class InventoryComponent implements OnInit {
 
   assets$: Observable<Assets[]> = of([]);
+  goTo:any;
 
   constructor(
     private inventoryService: InventoryService,
@@ -69,6 +70,10 @@ export class InventoryComponent implements OnInit {
 
   goToDeleteAssets() {
     this.router.navigateByUrl('/assets/delete');
+  }
+
+  goToLanding(){
+    this.router.navigateByUrl('/landing');
   }
 }
 

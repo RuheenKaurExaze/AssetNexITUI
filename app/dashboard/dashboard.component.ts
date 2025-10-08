@@ -27,7 +27,8 @@ hardwareChartData:any;
 hardwareChartOptions:any;
 supportChartData:any;
 supportChartOptions:any;
-
+softwareChartData:any;
+softwareChartOptions:any;
 
   ngOnInit() {
     
@@ -112,64 +113,96 @@ initializeHardwareChart()
     cutout: '',
     responsive: true,
     maintainAspectRatio: false
+
+  };
+  this.initializeSupportChart()
+  }
+
+  initializeSupportChart()
+  {
+    this.supportChartData= {
+    labels: ['In-Use', 'Dysfunctional', 'Rejected'],
+    datasets: [
+      {
+        data: [168,46,12], 
+        backgroundColor: ['#c5a183', '#f0947c', '#ed9c67'],
+        hoverBackgroundColor: ['#81C784', '#FFB74D', '#E57373']
+      }
+    ]
   };
 
- 
-}
-
-// initializeSupportChart()
-// {
-//   this.supportChartData={
-//   labels : ['Renewal','Outdated', 'Expired'],
-//   dataSets: [{  
-    
-//     data:['50','20','32'],
-//     backgroundColor:['#c5a434', '#f8c545', '#c7c567'],
-//     hoverbackgroundColor:['#f8a545', '#d2c567', '#d3a787'],
-//   }]
-// };
-
-// this.supportChartOptions={
-//   plugins:{
-//     legend:{
-//       position:'top'
-//     },
-//     title:{
-//       display:true,
-//       text:'Support Overview',
-//     }
-//   },
-
-//   cutout:'',
-//   responsive:true,
-//   maintainAspectRatio:false,
-
-// };
+  this.supportChartOptions = {
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      title: {
+          display: true,
+          text: 'Support Overview'
+         }
+    },
+    cutout: '',
+    responsive: true,
+    maintainAspectRatio: false
+  };
+this.initializeSoftwareChart()
+  }
 
 
+initializeSoftwareChart()
+{
+  this.softwareChartData={
+    labels: ['In-Use', 'Dysfunctional', 'Rejected'],
+    datasets: [
+      {
+        data: [168,46,12], 
+        backgroundColor: ['#c5a183', '#f0947c', '#ed9c67'],
+        hoverBackgroundColor: ['#81C784', '#FFB74D', '#E57373']
+      }
+    ]
+  };
 
-
-
-
+  this.softwareChartOptions = {
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      title: {
+          display: true,
+          text: 'Software Overview'
+         }
+    },
+    cutout: '',
+    responsive: true,
+    maintainAspectRatio: false
+  };
+  }
  
   goToAssets() {
     this.router.navigateByUrl('/assets'); 
   }
 
   goToEDispose() {
-    this.router.navigateByUrl('admin/ewaste/disposable-assets');
+    this.router.navigateByUrl('/ewaste/disposable-assets');
   }
 
   goToSupport() {
     this.router.navigateByUrl('/assets/support');
   }
 
-  goToSoftwareLicense() {
-    this.router.navigateByUrl('/admin/software-license');
+  goToNewSupport() {
+    this.router.navigateByUrl('/newsupport');
+
+  }
+  
+
+
+  goToSoftwareLicense(){
+    this.router.navigateByUrl('/software-license');
   }
 
   goToAbout() {
-    this.router.navigateByUrl('/admin/about');
+    this.router.navigateByUrl('about');
   }
 
   goToLanding() {
@@ -199,9 +232,7 @@ initializeHardwareChart()
     this.router.navigateByUrl(route);
   }
 
-  }
-  
 
-
+}
 
 

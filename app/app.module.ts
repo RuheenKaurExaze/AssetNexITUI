@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { LiveMapComponent } from '../live-tracking/livemap.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,10 +23,15 @@ import { GoogleMapsModule } from '@angular/google-maps';
       countDuplicates: true,
       extendedTimeOut: 3000,
       positionClass: 'toast-bottom-right',
+      
+     
+
     }),
   ],
   declarations: [],
   bootstrap:[],
+  providers: [{ provide: 'BASE_API_URL', useValue: 'http://localhost:3000' },AuthInterceptor],
+  
 })
 export class AppModule {}
 

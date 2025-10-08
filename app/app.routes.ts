@@ -27,7 +27,14 @@ import { ReportsComponent } from './reports/reports.component';
 import { LiveTrackingComponent } from '../live-tracking/live-tracking.component';
 import { LoginauthComponent } from './loginauth/loginauth.component';
 import { RealAlertsComponent } from './real-alerts/real-alerts.component';
+import { authGuard } from './auth/auth.guard';
 
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { LiveMapComponent } from '../live-tracking/livemap.component';
+import { WelcomeComponent } from '../welcome/welcome.component';
+import { LoginregisterComponent } from '../loginregister/loginregister.component';
 export const appRoutes: Routes =
  [
 
@@ -181,8 +188,15 @@ component:DeleteAssetComponent
     path:'assets/hardware',
     component:  HardwareGridComponent 
    },
+{
+  path:'assets/hardware/grid',
+  component:HardwareGridComponent
 
-
+},
+{
+path:'assets/realalerts',
+component:RealAlertsComponent
+},
 {
   path:'ewaste/disposable-assets',
   component:EDisposeComponent
@@ -217,23 +231,22 @@ component:DeleteAssetComponent
 //   component:UpdateSoftwareLicenseComponent
 // }
 
+
+
+
+
+  { path: 'login/auth', component: LoginauthComponent },
+  {path:'login/register', component:LoginregisterComponent},
+  { path: 'dashboard', canActivate: [authGuard], loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) },
+  { path: 'landing', loadComponent: () => import('../landing/landing.component').then(m => m.LandingComponent) },
+  { path: '', redirectTo: '/landing', pathMatch: 'full' }
 ];
 
 
-export const appConfig = {
-  providers: [provideRouter(appRoutes)]
-};
-
-
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
-import { LiveMapComponent } from '../live-tracking/livemap.component';
-import { WelcomeComponent } from '../welcome/welcome.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

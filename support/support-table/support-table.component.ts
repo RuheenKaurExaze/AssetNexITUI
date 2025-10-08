@@ -24,6 +24,7 @@ export class SupportTableComponent {
 
 data: any;
 support$: Observable<Support[]>= of([]);
+goTo:any;
 
   
   constructor(private supportService: SupportService, private router:Router){ }
@@ -46,6 +47,10 @@ support$: Observable<Support[]>= of([]);
     
    }
 
+   goToLanding()
+   {
+    this.router.navigateByUrl('/landing');
+   }
   
 
  }

@@ -26,6 +26,8 @@ export class EDisposeComponent implements OnInit{
 
 model:DisposeDetails;
 data: any;
+goTo:any;
+
 disposedetails$: Observable<DisposeDetails[]>= of([]);
 
 constructor(private router:Router, private edisposeService:EDisposeService){
@@ -73,6 +75,12 @@ ngOnInit(): void {
 
   goToGuidelines(){
      this.router.navigateByUrl ('/ewaste/disposable-assets/guidelines');
+    
+  }
+
+  goToLanding()
+  {
+    this.router.navigateByUrl('/landing');
     
   }
   }

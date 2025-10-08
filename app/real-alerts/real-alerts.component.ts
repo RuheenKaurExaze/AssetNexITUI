@@ -1,45 +1,56 @@
-import { Component,Injectable, NgModule, OnInit } from '@angular/core';
-import { RealAlertsService} from './real-alerts.service';
-import { FormsModule } from '@angular/forms';
-
-@Injectable({
-  providedIn:'root'})
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { RealAlertsService } from './real-alerts.service';
+import { RealAlertsModel } from './real-alerts.model';
+import { FormsModule, NgModel } from '@angular/forms';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-alert',
-  imports:[FormsModule],
-  templateUrl: './real-alerts.component.html',
+  selector: 'app-alerts',
+  imports:[FormsModule,SharedModule, TableModule],
+  templateUrl: './real-alerts.component.html'
 })
+export class RealAlertsComponent implements OnInit, OnDestroy {
+  alerts: RealAlertsModel[] = [];
+  goTo: any;
 
-export class RealAlertsComponent implements OnInit {
-  alerts: string[] = [];
-  private ws! : WebSocket;
-
-  constructor(private realalertsService: RealAlertsService) {}
-
-  connect(){
-    this.ws= new WebSocket('wss://localhost:7195/alerts');
-    this.ws.onmessage= (event) => {
-      alert(`New Alert: ${event.data}`)
-    }
-  };
+  constructor(private realalertsService: RealAlertsService,  private router: Router ) {}
 
   ngOnInit() {
-    
     this.realalertsService.startConnection();
-    this.realalertsService.listenForAlerts((message: string) => {
-      this.alerts.push(message);
-
-
+    this.realalertsService.alerts$.subscribe(alerts => {
+      this.alerts = alerts;
     });
   }
 
+  ngOnDestroy() {
+    this.realalertsService.stop();
+  }
 
+  goToLanding()
+  {
+    this.router.navigateByUrl('/landing');
+  }
+
+  goToEDispose()
+  {
+    this.router.navigateByUrl('ewaste/disposable-assets')
+  }
+
+  goToGuidelines()
+  {
+    this.router.navigateByUrl('/ewaste/disposable-assets/guidelines');
+  }
+
+  goToAddEDispose()
+  {
+    this.router.navigateByUrl('/ewaste/disposable-assets/add');
+  }
+
+  goToDashboard()
+  {
+    this.router.navigateByUrl('/dashboard')
+  }
 
 }
-
-
-
-
-
-

@@ -6,7 +6,9 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { TableModule } from 'primeng/table';
-import mapboxgl from 'mapbox-gl';
+// import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+
 import {of,   Observable} from'rxjs';
 import{Router} from '@angular/router';
 import { LocationLiveMap } from './locationlm.model';
@@ -15,6 +17,7 @@ import { LocationService } from './location.service';
 @Component({
   selector: 'app-livemap',
   standalone: true,
+  
   imports: [CommonModule, TableModule],
   templateUrl: './livemap.component.html',
   styleUrls: ['./livemap.component.css']
@@ -23,7 +26,7 @@ export class LiveMapComponent implements AfterViewInit, OnInit {
     @Input() locations: { latitude: number, longitude: number, name: string }[] = [];
    
      locationss$: Observable<LocationLiveMap[]> = of([]);
-
+goTo:any;
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef;
   map!: mapboxgl.Map;
 
@@ -120,6 +123,9 @@ export class LiveMapComponent implements AfterViewInit, OnInit {
     });
 }
 
+goToLanding(){
+  this.router.navigateByUrl('/landing');  
+}
   
 }
 

@@ -23,6 +23,8 @@ export class SoftwareLicenseComponent implements OnInit {
 
   model:SoftwareLicense;
   data:any;
+  goTo:any;
+
   licenses$? : Observable<SoftwareLicense[]>= of([]);
   
   private softwarelicenseSubscription? : Subscription ;
@@ -63,7 +65,10 @@ this. licenses$=this.softwareLicenseService.getSoftwareLicense();
    }
 
    
-
+goToLanding(){
+  this.router.navigateByUrl('/landing');
+  
+}
 
   }
 

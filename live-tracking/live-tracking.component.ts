@@ -22,7 +22,7 @@ import { LocationLiveTracking } from './locationlt.model';
 
 export class LiveTrackingComponent implements OnInit {
 
-
+goTo:any;
   constructor( private router:Router, private locationService: LocationService) {}
   // locations: LocationLiveTracking[] = [];
   goToLiveMap()
@@ -49,9 +49,9 @@ export class LiveTrackingComponent implements OnInit {
     this.live$ = of(data);
   });
 
-  // this.locationService.getColumnData().subscribe((data: any[]) => {
-  //   this.trackingData = data || [];
-  // });
+  this.locationService.setColumnData().subscribe((data: any[]) => {
+    this.trackingData = data || [];
+  });
   }
 
   zoom: number = 8;
@@ -85,6 +85,10 @@ export class LiveTrackingComponent implements OnInit {
 		  draggable: true
 	  }
   ]
+
+  goToLanding(){
+    this.router.navigateByUrl('/landing');
+  }
 }
 
 

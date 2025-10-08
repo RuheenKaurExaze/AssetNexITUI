@@ -1,9 +1,7 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
-
+import { Observable } from 'rxjs';
 
 interface LoginRequest {
   email: string;
@@ -15,63 +13,48 @@ interface LoginResponse {
   expiration: string;
 }
 
+interface RegiterRequest{
+email:string;
+password:string;
+
+}
+
+interface RegisterResponse{
+errors:string[];
+message?:string;
+success:boolean;
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  url='';
-  private apiUrl = 'https://localhost:7195/api/Auth'; 
-  private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
-
-  isLoggedIn$ = this.loggedIn.asObservable();
+  private apiUrl = 'https://localhost:7195'; // your API base URL
 
   constructor(private http: HttpClient) {}
 
-  login(request: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, request);
-  }
-  loginn(request: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, request).pipe(
-      tap((res: LoginResponse) => {
-        localStorage.setItem('token', res.token);
-        this.loggedIn.next(true);
-      })
-    );
+  login(request: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/api/Auth/login`, request);
   }
 
-   register(request: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, request);
-  } 
-
-  logout() {
-    localStorage.removeItem('token');
-    this.loggedIn.next(false);
+  register(email:string, password:string):Observable<RegisterResponse>{
+    return this.http.post<RegisterResponse>(`${this.apiUrl}/api/Auth/register`, {email,password});
   }
 
   getToken(): string | null {
     return localStorage.getItem('token');
   }
- 
-  private hasToken(): boolean {
-    return !!localStorage.getItem('token');
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
   }
 
-
+  logout(): void {
+    localStorage.removeItem('token');
   }
+}
 
 
 
 
-
-
-
-// [Route("api/[controller]")]
-// [ApiController]
-// public class AuthController : ControllerBase
-// {
-//     [HttpPost("login")]
-//     public IActionResult Login([FromBody] LoginDto loginDto) { ... }
-
-//     [HttpPost("register")]
-//     public IActionResult Register([FromBody] RegisterDto registerDto) { ... }
-// }

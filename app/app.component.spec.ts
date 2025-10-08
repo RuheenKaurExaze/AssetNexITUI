@@ -14,16 +14,46 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should create the app', () =>
+  {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app=fixture.componentInstance;
+    expect(app).toBeTruthy();
+  })
+
+  it('should')
+
   it(`should have the 'ITAsset' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('ITAsset');
   });
 
+  it(`should have the ITAsset Title`, () =>{
+const fixture = TestBed.createComponent(AppComponent);
+const app= fixture.componentInstance;
+expect(app.title). toEqual('ITAsset');
+  });
+   
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ITAsset');
   });
+
+  it('should render title', ()=> {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ITAsset');
+  })
+
+it('should render title',() => {
+  const fixture = TestBed.createComponent(AppComponent);
+  fixture.detectChanges();
+  const compiled = fixture.nativeElement as HTMLElement;
+  expect(compiled.querySelector('h1')?.textContent.toContain('Hello,ITAsset'));
+  
+})
 });

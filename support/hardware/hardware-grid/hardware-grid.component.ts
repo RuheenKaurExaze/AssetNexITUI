@@ -23,8 +23,8 @@ export class HardwareGridComponent {
 
  data: any;
  hardware$: Observable<HardwareModel[]>= of([]);
+goTo:any;
 
-  
   constructor(private hardwareService: HardwareService, private router:Router){ }
 
    ngOnInit(): void 
@@ -46,6 +46,14 @@ goToDashboard()
     this.router.navigateByUrl('/assets/support/hardware')
   }
 
+
+  goToLanding()
+  {
+    this.router.navigateByUrl('/landing');
+
+  }
+
+  
  }
 
 

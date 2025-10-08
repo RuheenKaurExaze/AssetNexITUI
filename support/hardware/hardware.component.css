@@ -58,6 +58,11 @@ h2 {
     outline: none;
 }
 
+tr:hover {
+    background-color: #eea263;
+    transition-duration: 0.2s;
+}
+
 .form-actions {
     margin-top: 2rem;
     display: flex;

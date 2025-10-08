@@ -5,6 +5,9 @@ import { ApplicationConfig} from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import { provideRouter} from '@angular/router';
+import { TokenInterceptor } from './auth/auth.interceptor';
+
+ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -19,8 +22,23 @@ import { provideRouter} from '@angular/router';
             darkModeSelector: '.my-app-dark'
         }
     }
-})
+}),
+{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
               ]
 
-           
+          
  };
+
+
+providers: [
+  
+]
+
+
+
+// export const appConfig: ApplicationConfig = {
+//   providers: [
+//     provideRouter(routes),
+//     provideHttpClient(withInterceptors([TokenInterceptor]))
+//   ]
+// };
