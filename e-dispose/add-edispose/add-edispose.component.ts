@@ -28,8 +28,8 @@ AssetTypeId:'',
 AssetName:'',
 AssetType:'',
 Reason:'',
-DisposedOn: '',//date
-DisposedBy: '',//name or email
+DisposedOn: '',
+DisposedBy: '',
 Condition:'',
 DateOfIssue:'',
 WarrantyDate: '',
@@ -44,7 +44,7 @@ Status:'',
   }
   onFormSubmit() {
     console.log('Form submitted:', this.model);
-    // Add your form handling logic here
+    
     this. addEDisposeAssetSubscription= this.edisposeService.addDisposedAssets(this.model).subscribe({next : (response)=>
     {      console.log('The e-diposed asset is :', response);
      this.router.navigateByUrl('/admin/ewaste/disposable-assets');
@@ -56,7 +56,7 @@ Status:'',
   
     )};
  ngOnDestroy(): void {
-   //throw new Error('Method not implemented');
+   
    this?.addEDisposeAssetSubscription?.unsubscribe();
 
  }

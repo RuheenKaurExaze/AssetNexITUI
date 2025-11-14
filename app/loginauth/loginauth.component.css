@@ -247,7 +247,7 @@ button:hover {
 }
 
 input:checked+.slider {
-    background-color: #4CAF50;
+    background-color: #d66418;
 }
 
 input:checked+.slider:before {

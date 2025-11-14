@@ -20,7 +20,6 @@ import { HardwareGridComponent } from '../support/hardware/hardware-grid/hardwar
 import { SupportTableComponent } from '../support/support-table/support-table.component';
 import { GuidelinesComponent } from '../e-dispose/guidelines/guidelines.component';
 import { HelppageComponent } from '../helppage/helppage.component';
-import { LayoutComponent } from '../layout/layout.component';
 import { DeleteAssetComponent } from '../inventory/delete-asset/delete-asset.component';
 import { UinewComponent } from './dashboard/uinew/uinew.component';
 import { ReportsComponent } from './reports/reports.component';
@@ -28,13 +27,11 @@ import { LiveTrackingComponent } from '../live-tracking/live-tracking.component'
 import { LoginauthComponent } from './loginauth/loginauth.component';
 import { RealAlertsComponent } from './real-alerts/real-alerts.component';
 import { authGuard } from './auth/auth.guard';
-
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { LiveMapComponent } from '../live-tracking/livemap.component';
-import { WelcomeComponent } from '../welcome/welcome.component';
-import { LoginregisterComponent } from '../loginregister/loginregister.component';
+import { TokenInterceptor } from './auth/auth.interceptor';
+import { LogoutComponent } from '../logout/logout.component';
 export const appRoutes: Routes =
  [
 
@@ -64,9 +61,7 @@ export const appRoutes: Routes =
    
     ]
   },
-
-
-
+  
     { 
     path: 'landing',
     component: LandingComponent
@@ -86,24 +81,15 @@ export const appRoutes: Routes =
     component: LiveMapComponent
    },
 
-
    {
      path:'reports',
      component:ReportsComponent
    },
-
    
    {
     path:'about',
     component:AboutComponent
    },
-
-//    {
-
-//  path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]
-
-//    },
- 
 
      { 
     path: 'login',
@@ -129,7 +115,7 @@ export const appRoutes: Routes =
 
   { 
     path: '', 
-    redirectTo: 'dashboard', 
+    redirectTo: 'landing', 
     pathMatch: 'full'
    },
 
@@ -149,14 +135,8 @@ export const appRoutes: Routes =
    },
 
    {
-    path:'welcome',
-    component:WelcomeComponent
-   },
-
-   
-   {
-path:'assets/delete',
-component:DeleteAssetComponent
+      path:'assets/delete',
+      component:DeleteAssetComponent
    },
 
    {
@@ -174,11 +154,6 @@ component:DeleteAssetComponent
     component:HelppageComponent
    },
 
-   {
-    path:'layout',
-    component:LayoutComponent
-   },
-   
    {
     path:'newsupport',
     component:SupportTableComponent
@@ -226,23 +201,12 @@ component:RealAlertsComponent
   component:AddSoftwareLicenseComponent
 },
 
-// {
-//   path:'assets/software-license/update',
-//   component:UpdateSoftwareLicenseComponent
-// }
-
-
-
-
-
-  { path: 'login/auth', component: LoginauthComponent },
-  {path:'login/register', component:LoginregisterComponent},
+  { path: 'login/auth', component: LoginauthComponent },  
   { path: 'dashboard', canActivate: [authGuard], loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) },
   { path: 'landing', loadComponent: () => import('../landing/landing.component').then(m => m.LandingComponent) },
-  { path: '', redirectTo: '/landing', pathMatch: 'full' }
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  {path:'login/logout', component:LogoutComponent},
 ];
-
-
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

@@ -10,64 +10,36 @@
 </head>
 
 <body>
-
     <div class="nav-left">
-
-
-
         <div class="navbar">
-
-
             <div class="logo-wrapper">
                 <h1 class="logo" (click)="goToLanding()">AssetNex<span class="highlight">IT</span> </h1>
-
-
                 <p class="below">TRACK | MANAGE | DISPOSE</p>
             </div>
-
-
-
             <ul class="nav-links">
-                <li><a (click)="goTo('/assets/explore')">EXPLORE <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-</svg></a></li>
-                <li><a (click)="goTo('/assets/support')">SUPPORT DESK <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-  <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-  <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-</svg></a></li>
-                <li><a (click)="goTo('/about')">ABOUT <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
-  <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
-</svg></a></li>
+                <li>
+                    <a (click)="goTo('/assets/explore')">
+                        <img src="assets/images/image (1).svg">EXPLORE </a>
+                </li>
+                <li>
+                    <a (click)="goTo('/assets/support')">
+                        <img src="assets/images/image (2).svg">SUPPORT DESK</a>
+                </li>
+                <li>
+                    <a (click)="goTo('/about')"><img src="assets/images/image (3).svg">ABOUT</a>
+                </li>
             </ul>
-
         </div>
     </div>
 
-
-
     <h3><u>ASSET INVENTORY LIST</u></h3>
-
     <div class="buttonrow">
 
+        <button type="button" class="btn btn-primary" routerlink="/assets/add" (click)="goToAddAssets()"><img src="assets/images/image (13).svg">Add Asset</button>
 
-        <button type="button" class="btn btn-primary" routerlink="/assets/add" (click)="goToAddAssets()">Add Asset<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-</svg></button>
+        <button type="button" class="btn btn-dark" (click)="goToDashboard()" routerlink="/dashboard"><img src="assets/images/image (10).svg">To Dashboard</button>
 
-        <button type="button" class="btn btn-dark" (click)="goToDashboard()" routerlink="/dashboard">To Dashboard<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
-</svg></button>
-
-        <button type="button" class="btn btn-primary" (click)="goToDeleteAssets()" routerLink="/assets/delete">Remove Asset<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
-  <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
-</svg></button>
-
-
-
-
-
-
+        <button type="button" class="btn btn-primary" (click)="goToDeleteAssets()" routerLink="/assets/delete"><img src="assets/images/image (12).svg">Remove Asset</button>
     </div>
 
     <p-table class="custom-table" [value]="assets$ | async " [paginator]="true" [rows]="10">
@@ -98,7 +70,6 @@
                     <p-sortIcon field="warrantyDate"></p-sortIcon>
                 </th>
 
-
                 <th pSortableColumn="userId">USER ID
                     <p-sortIcon field="userId"></p-sortIcon>
                 </th>
@@ -118,11 +89,8 @@
                 <th pSortableColumn="assetType">ASSET TYPE
                     <p-sortIcon field="assetType"></p-sortIcon>
                 </th>
-
             </tr>
-
         </ng-template>
-
         <ng-template #body let-asset>
             <tr>
                 <td (click)="goToDeleteAssets()">{{ asset.id }}</td>
@@ -139,8 +107,4 @@
             </tr>
         </ng-template>
     </p-table>
-
-    <!-- component-a.html -->
-    <!-- <button (click)="exportData()">Export Columns</button> -->
-
 </body>

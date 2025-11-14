@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'primeng/api';
 import { LocationService } from '../live-tracking/location.service';
-import { LocationLiveTracking } from '../live-tracking/locationlt.model';
 
 
 @Component({
@@ -28,14 +27,15 @@ export class InventoryComponent implements OnInit {
   constructor(
     private inventoryService: InventoryService,
     private router: Router,
-    private sharedData: LocationService
+    private sharedData: LocationService,
+  
   ) { }
 
   ngOnInit(): void {
     this.assets$ = this.inventoryService.getAllAssets().pipe(map(data => data ?? []));
   }
 
-  // Method to get selected columns for export
+
   getExportData(): Observable<Partial<Assets>[]> {
     return this.assets$.pipe(
       map((assets: Assets[]) =>
@@ -52,10 +52,8 @@ export class InventoryComponent implements OnInit {
 
   exportData() {
     this.getExportData().subscribe(exportedData => {
-      // Save the exported data to the shared service for Live Tracking
       this.sharedData.setColumnData(exportedData);
-      // Optionally, navigate to the live tracking page
-      // this.router.navigate(['/livetracking']);
+    
       console.log('Exported Data:', exportedData);
     });
   }

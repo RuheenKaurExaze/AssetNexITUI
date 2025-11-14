@@ -15,133 +15,40 @@
             <p class="below">TRACK | MANAGE | DISPOSE</p>
         </div>
         <ul class="nav-links">
-            <li><a (click)="goTo('/assets/explore')">EXPLORE <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-</svg></a></li>
-            <li><a (click)="goTo('/assets/support')">SUPPORT DESK <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-  <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-  <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-</svg></a></li>
-            <li><a (click)="goTo('/about')">ABOUT <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
-  <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
-</svg></a></li>
-        </ul>
+            <li>
+                <a (click)="goTo('/assets/explore')"><img src="assets/images/image (1).svg">EXPLORE </a>
+            </li>
 
+            <li>
+                <a (click)="goTo('/assets/support')">
+                    <img src="assets/images/image (2).svg">SUPPORT DESK </a>
+            </li>
+
+            <li>
+                <a (click)="goTo('/about')"><img src="assets/images/image (3).svg">ABOUT</a>
+            </li>
+        </ul>
     </div>
 </div>
-
 
 <div class="half-colored">
     <div class="container">
         <div class="left-half">
             <div class="logo">AssetNex <span class=highlight>IT
                 </span></div>
-            <div class="left">, a comprehensive platform for ITAsset Management, Tracking and Disposal.
-            </div>
+            <img class="loginhelp" src="assets/images/login.png " />
         </div>
-
-
-
         <div class="right-half ">
-
             <h4>REGISTER</h4>
-
             <form (ngSubmit)="onRegister() ">
                 <label>Email <input type="text " placeholder="email " ngModel name="email ">
             </label>
-
-                <label>Password<input type="text " placeholder="password " ngModel name="password "></label>
+                <label>Password<input type="password" placeholder="password " ngModel name="password "></label>
+                <div ngIf="error" class="text-danger mt-2">{{errors}}</div>
+                <button type="submit " (click)="onRegister()" class="btn btn-primary">Register</button>
+                <div ngIf="message " style="color: green; ">{{message}}</div>
+                <ul ngIf="errors.length> 0" style="color: rgb(192, 2, 2);">
+                    <a *ngFor="let err of errors">{{ err }}</a>
+                </ul>
             </form>
-
-            <button type="submit ">Register</button>
-
-            <div *ngIf="message " style="color: green; ">{{ message }}</div>
-            <ul *ngIf="errors.length> 0" style="color: red;">
-                <li *ngFor="let err of errors">{{ err }}</li>
-            </ul>
         </div>
-
-
-
-
-
-
-
-
-
-
-        <!-- 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Half Colored Container</title>
-    <style>
-        .container {
-            display: flex;
-            width: 100%;
-            /* Full width */
-            height: 200px;
-            /* Set desired height */
-        }
-        
-        .left-half {
-            flex: 1;
-            /* Take up half the width */
-            background-color: #ff0000;
-            /* Red */
-        }
-        
-        .right-half {
-            flex: 1;
-            /* Take up half the width */
-            background-color: #ffffff;
-            /* White */
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="left-half"></div>
-        <div class="right-half"></div>
-    </div>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Half Colored Container</title>
-    <style>
-        .half-colored {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            background-color: #ffffff;
-            /* Default background */
-        }
-        
-        .half-colored::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            /* Half width */
-            height: 100%;
-            background-color: #ff0000;
-            /* Red */
-        }
-    </style>
-</head>
-
-<body>
-    <div class="half-colored"></div>
-</body>-->

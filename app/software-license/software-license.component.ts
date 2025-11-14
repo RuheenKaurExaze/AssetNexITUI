@@ -75,29 +75,6 @@ goToLanding(){
 
   
 
-     
-
-
-  
-
-
-
-
-
-//   onFormSubmit() {
-//     console.log('Form submitted:', this.model);
-//     // Add your form handling logic here
-//     this. softwarelicenseSubscription= this.softwareLicenseService.addSoftwareLicense(this.model).subscribe({next : (response)=>
-//     {      console.log('The software license is :', response);
-   
- 
-//     } ,
-//   }
-//     )};
-//  ngOnDestroy(): void {
-//    //throw new Error('Method not implemented');
-//    this?.softwarelicenseSubscription?.unsubscribe();
-
    
  
 

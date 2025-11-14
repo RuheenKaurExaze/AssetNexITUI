@@ -40,20 +40,12 @@
     <h3><u>HARDWARE ISSUES INVENTORY </u></h3>
 
     <div class="buttonrow">
-        <button type="submit" class="btn btn-primary" routerlink="assets/hardware" (click)="goToHardware()">Add Hardware</button>
-
-
-        <button type="button" class="btn btn-dark" (click)="goToDashboard()" routerlink="/dashboard">To Dashboard<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
-</svg></button>
-
+        <button type="submit" class="btn btn-primary" routerlink="assets/hardware" (click)="goToHardware()"><img src ="assets/images/image (13).svg">Add Hardware</button>
+        <button type="button" class="btn btn-dark" (click)="goToDashboard()" routerlink="/dashboard"><img src="assets/images/image (10).svg">To Dashboard</button>
     </div>
-
-
 
     <p-table class="custom-table" [value]="hardware$ | async " [paginator]="true" [rows]="10">
         <ng-template #header>
-
             <tr>
                 <th pSortableColumn="id">Id
                     <p-sortIcon field="id"></p-sortIcon>
@@ -83,9 +75,7 @@
                     <p-sortIcon field="warrantyDate"></p-sortIcon>
                 </th>
 
-
         </ng-template>
-
         <ng-template #body let-hardware>
             <tr>
                 <td>{{ hardware.id }}</td>
@@ -97,10 +87,7 @@
                 <td>{{ hardware. dateSubmitted | date}}</td>
                 <td>{{ hardware.dateOfIssue | date }}</td>
                 <td>{{ hardware.warrantyDate | date}}</td>
-
             </tr>
         </ng-template>
     </p-table>
-
-
 </body>

@@ -5,27 +5,64 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { SharedModule } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import {Router} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { signal} from '@angular/core';
+import { Observable,of, Subscription } from 'rxjs';
+import { DatePicker } from 'primeng/datepicker';
+
+
 
 @Component({
   selector: 'app-alerts',
-  imports:[FormsModule,SharedModule, TableModule],
+  imports:[FormsModule,SharedModule, TableModule,CommonModule],
   templateUrl: './real-alerts.component.html'
 })
-export class RealAlertsComponent implements OnInit, OnDestroy {
-  alerts: RealAlertsModel[] = [];
-  goTo: any;
+export class RealAlertsComponent implements OnInit {
+    model:RealAlertsModel;
+   data:any;
+  goTo:any;
+  sub? : Subscription;
 
-  constructor(private realalertsService: RealAlertsService,  private router: Router ) {}
+    alerts$? : Observable<RealAlertsModel[]>= of([]);
+    
+    private realalertsSubscription? : Subscription ;
+  
+    constructor(private router : Router, private realAlertsService : RealAlertsService) {
 
-  ngOnInit() {
-    this.realalertsService.startConnection();
-    this.realalertsService.alerts$.subscribe(alerts => {
-      this.alerts = alerts;
-    });
+      this.model={
+        id:'',
+        assetId:'',
+     assetName:'',
+     threshold:'',
+     currentStock:'',
+      level:'',
+      message:'',
+     createdAt:'',
+      }
+    }
+
+alerts:RealAlertsModel[]=[];
+
+  ngOnInit(): void
+  {
+    this.realAlertsService.startConnection();
+    this.sub=this.realAlertsService.alerts$.subscribe( a=> this.alerts = a);
+    this.alerts$=this.realAlertsService.getRealAlerts();
+
+      this.realAlertsService.getRealAlerts().subscribe(data => {
+    console.log('RealAlerts:', data);
+    this.alerts$ = of(data);
+
+
+
+  });
   }
 
-  ngOnDestroy() {
-    this.realalertsService.stop();
+  ngOnDestroy(): void {
+    
+    this.sub?.unsubscribe;
+    this.realAlertsService.stop();
+
   }
 
   goToLanding()
@@ -35,7 +72,7 @@ export class RealAlertsComponent implements OnInit, OnDestroy {
 
   goToEDispose()
   {
-    this.router.navigateByUrl('ewaste/disposable-assets')
+    this.router.navigateByUrl('ewaste/disposable-assets');
   }
 
   goToGuidelines()
@@ -48,9 +85,15 @@ export class RealAlertsComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/ewaste/disposable-assets/add');
   }
 
+  goToDelete()
+  {
+    this.router.navigateByUrl('assets/delete');
+  }
+
   goToDashboard()
   {
-    this.router.navigateByUrl('/dashboard')
+    this.router.navigateByUrl('/dashboard');
   }
 
 }
+

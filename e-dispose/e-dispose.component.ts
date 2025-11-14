@@ -56,7 +56,8 @@ ngOnInit(): void {
    
   this.edisposeService.getDisposedAssets().subscribe(data => {
     console.log('DISPOSE DATA:', data);
-    this.disposedetails$ = of(data);  // Use 'of' to convert to Observable
+    this.disposedetails$ = of(data);
+    
   });
 }
 

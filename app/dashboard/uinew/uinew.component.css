@@ -16,7 +16,7 @@ body {
 }
 
 .highlight {
-    color: #fc7e2a;
+    color: #ffffff;
     font-weight: 500px;
 }
 
@@ -25,14 +25,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem;
-    background-color: #fdfcfc;
-    color: #000000;
+    background-color: #f0842c;
+    color: #ffffff;
     margin-left: -20px;
     position: fixed;
     margin-top: 10px;
     top: -10px;
     left: 0;
-    height: 100px;
+    height: 70px;
     width: 1500px;
     border-radius: 25px;
     z-index: 1000;
@@ -54,7 +54,7 @@ body {
 }
 
 .logo a .highlight {
-    color: #f0842c;
+    color: #ffffff;
 }
 
 .logo a {
@@ -62,7 +62,7 @@ body {
 }
 
 .highlight {
-    color: #f0842c;
+    color: #fcfbfb;
 }
 
 .below {
@@ -70,7 +70,7 @@ body {
     font-weight: 600;
     margin-top: 2px;
     letter-spacing: 0.5px;
-    color: #000000;
+    color: #ffffff;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.2;
 }
@@ -167,18 +167,6 @@ body {
     gap: 16x;
     transition-duration: 1.5s;
 }
-
-
-/* .card {
-        background: rgb(243, 237, 237);
-        border: 1px solid #ffe0cc;
-        border-radius: 12px;
-        font-size: 15px;
-        padding: 16px;
-        box-shadow: 0 4px 6px rgba(255, 102, 0, 0.1);
-        transition: transform 0.2s;
-    }
-     */
 
 .arrange a:hover {
     color: rgb(230, 93, 3);

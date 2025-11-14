@@ -4,53 +4,72 @@ import * as signalR from '@microsoft/signalr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 import { RealAlertsModel } from './real-alerts.model';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RealAlertsService {
-  private hubConnection?: signalR.HubConnection;
-  private alertsSubject = new BehaviorSubject<RealAlertsModel[]>([]);
-  alerts$ = this.alertsSubject.asObservable();
+
+
   constructor(private http: HttpClient){}
-getRealAlerts() : Observable<RealAlertsModel[]>
 
+  private hubConnection?: signalR.HubConnection;
+  private alertsSubject= new BehaviorSubject<RealAlertsModel[]>([]);
+  alerts$ = this.alertsSubject.asObservable();
+err:any;
+
+
+  startConnection(accessToken?:string)
   {
-// return this.http.get<SoftwareLicense[]>(`${environment.apibaseUrl}/api/softwarelicense`);
-return this.http.get<RealAlertsModel[]>('api/Alerts/realalerts');
+    this.hubConnection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7195/hubs/alerts",
+      {
+        accessTokenFactory:() => accessToken ?? ""
+      }
+      ).withAutomaticReconnect().build();
 
-  }
-
-
-  startConnection(accessToken?: string) {
-    this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:7195/hubs/alerts", {
-        accessTokenFactory: () => accessToken ?? ""})
-      .withAutomaticReconnect()
-      .build();
-  
-    this.hubConnection.start()
-      .then(() => {
+      this.hubConnection.start().then(()=> {
         console.log('SignalR connected');
         this.registerListeners();
-      })
-      .catch(err => console.error('SignalR connect error', err));
 
+      }).catch(err=> console.error('SignalR connect error', err));
+    }
 
-}
-
-  private registerListeners()
+    private registerListeners()
+{
+  if (!this.hubConnection) return;
+  
+  this.hubConnection.on('ReceiveInventoryAlert', (payload: RealAlertsModel)=>
   {
-    if (!this.hubConnection) return;
-    this.hubConnection.on('ReceiveInventoryAlert', (payload: RealAlertsModel) => {
-      const current = this.alertsSubject.value.slice();
-      current.unshift(payload);
-      this.alertsSubject.next(current);
-    });
+    const current = this.alertsSubject.value.slice()
+    current.unshift(payload);
+    this.alertsSubject.next(current);
+
+  });
+}
+
+stop()
+{
+  this.hubConnection?.stop();
+}
+
+ deleteRealAlerts():Observable<RealAlertsModel>
+ {
+  return this.http.delete<RealAlertsModel>(`${environment.apibaseUrl}/api/Alerts/deleterealalerts`)
+ }
+
+
+getRealAlerts():Observable<RealAlertsModel[]>
+  {
+return this.http.get<RealAlertsModel[]>(`${environment.apibaseUrl}/api/Alerts/realalerts`, );
   }
 
-  stop() {
-    this.hubConnection?.stop();
-  }
 }
+
+
+
+
+
+
+
 

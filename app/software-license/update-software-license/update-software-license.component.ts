@@ -61,26 +61,22 @@ export class UpdateSoftwareLicenseComponent implements OnDestroy,OnInit {
   onSubmit(): void
 
   {
-
-  // console.log(this.assets);
-  // console.log ('Submitted asset: ' + this.assets;
-
-  const updateSoftwareLicenseRequest : UpdateSoftwareLicenseRequest//interface 
+  const updateSoftwareLicenseRequest : UpdateSoftwareLicenseRequest
   =
  
   {
  
-    Id: this.softwareLicense?.Id??'',
-    UserName: this.softwareLicense?.UserName??'',
-    Request: this.softwareLicense?.Request??'',
-    EmployeeId: this.softwareLicense?.EmployeeId??'',
-    SoftwareName:this.softwareLicense?.SoftwareName??'',
-    OtherSoftware:this.softwareLicense?.OtherSoftware??'',
-    DateApplied: this.softwareLicense?.DateApplied??'',
+    id: this.softwareLicense?.id??'',
+    userName: this.softwareLicense?.userName??'',
+    request: this.softwareLicense?.request??'',
+    employeeId: this.softwareLicense?.employeeId??'',
+    softwareName:this.softwareLicense?.softwareName??'',
+    otherSoftware:this.softwareLicense?.otherSoftware??'',
+    dateApplied: this.softwareLicense?.dateApplied??'',
 
   };
 
-  //pass this object to a service
+  
   if (this.Id)
   {
   const editSoftwareLicenseSubscription = this.softwareLicenseService.updateSoftwareLicense(this.Id, updateSoftwareLicenseRequest).subscribe({

@@ -11,6 +11,7 @@ import { AddAssetRequest } from '../models/add-assets-model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class InventoryService {
 
 
@@ -45,12 +46,3 @@ return this.http.put<Assets>(`${environment.apibaseUrl}/api/assets/${id}`, updat
 
 }
 }
-
-
-  
-//   // error : (error)=>{
-
-//   // }
-
-
-// //to connect apis and angualr we use http, we also will have to observable , a promise that we have to subscribe to 

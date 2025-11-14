@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import {ChartModule} from 'primeng/chart';
 import { InventoryService } from '../../inventory/services/inventory.service';
 
-
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -64,12 +63,12 @@ initializeEwasteChart() {
     datasets: [
       {
         data: [10,8,7], 
-        backgroundColor: ['#c4a183', '#f0944c', '#da9c67'],
+        backgroundColor: ['#ca6208', '#ffb26e', '#cf803a'],
         hoverBackgroundColor: ['#81C784', '#FFB74D', '#E57373']
       }
     ]
   };
-
+  
   this.eWasteChartOptions = {
     plugins: {
       legend: {
@@ -94,7 +93,7 @@ initializeHardwareChart()
     datasets: [
       {
         data: [200,15,24], 
-        backgroundColor: ['#c5a183', '#f0947c', '#ed9c67'],
+        backgroundColor: ['#ca6208', '#ffb26e', '#cf803a'],
         hoverBackgroundColor: ['#81C784', '#FFB74D', '#E57373']
       }
     ]
@@ -125,8 +124,8 @@ initializeHardwareChart()
     datasets: [
       {
         data: [168,46,12], 
-        backgroundColor: ['#c5a183', '#f0947c', '#ed9c67'],
-        hoverBackgroundColor: ['#81C784', '#FFB74D', '#E57373']
+        backgroundColor: ['#ca6208', '#ffb26e', '#cf803a'],
+        hoverBackgroundColor: [, '#FFB74D', '#E57373']
       }
     ]
   };
@@ -156,7 +155,7 @@ initializeSoftwareChart()
     datasets: [
       {
         data: [168,46,12], 
-        backgroundColor: ['#c5a183', '#f0947c', '#ed9c67'],
+        backgroundColor: ['#ca6208', '#ffb26e', '#cf803a'],
         hoverBackgroundColor: ['#81C784', '#FFB74D', '#E57373']
       }
     ]

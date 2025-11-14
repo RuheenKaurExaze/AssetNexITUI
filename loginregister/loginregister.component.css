@@ -61,34 +61,35 @@ a:hover {
     color: white;
     font-size: 14px;
     margin-top: 130px;
-    margin-left: 250px;
+    margin-left: 380px;
     justify-content: center;
-    background: linear-gradient(to right, #0c0c0c 50%, #f08522 50%);
+    background: linear-gradient(to right, #1a1919 50%, #f19137 50%);
     height: 500px;
     width: 650px;
 }
 
+.right-half h4 {
+    margin-left: 35px
+}
+
 .half-colored .right-half {
-    justify-content: flex-end;
-    margin-left: 400px;
+    margin-left: 390px;
     margin-top: 20px;
+    justify-content: center;
+    block-size: auto;
 }
 
-.half-colored .left-half {
-    margin-left: 10px;
-    font-size: 15px;
-    align-items: flex-start;
-    text-align: center;
-    margin-top: 60px;
-}
-
-.left-half .left {
-    margin-left: -10px;
+.loginhelp {
+    height: 500px;
+    width: 500px;
+    margin-left: -70px;
+    margin-top: -20px;
+    position: absolute;
 }
 
 .login-card h4 {
     color: #e96a00;
-    margin-top: 20px;
+    margin-top: 60px;
     margin-left: 110px;
     font-size: 20px;
     font-weight: bolder;
@@ -155,10 +156,11 @@ button:hover {
 }
 
 .left-half .logo {
-    font-size: 1.8rem;
     font-weight: bold;
     color: #faf7f7;
-    margin: 0;
+    margin-left: 45px;
+    margin-top: 120px;
+    font-size: 35px;
 }
 
 .logo .highlight {

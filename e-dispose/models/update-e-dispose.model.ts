@@ -6,8 +6,8 @@ AssetTypeId:string,
 AssetName:string,
 AssetType:string,
 Reason:string,
-DisposedOn: string,//date
-DisposedBy: string//name or email
+DisposedOn: string,
+DisposedBy: string,
 Condition:string,
 DateOfIssue:string,
 WarrantyDate: string,

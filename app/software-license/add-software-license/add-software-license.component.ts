@@ -42,13 +42,7 @@ this.model = {
   }
 
   onFormSubmit() {
-    // console.log('Form submitted:', this.model);
-    
-    // this. addEDisposeAssetSubscription= this.softwareLicenseService.addSoftwareLicense(this.model).subscribe({next : (response)=>
-    // {      console.log('The software license is :', response);
-    //  this.router.navigateByUrl('/admin/assets/edispose');
  
-    // } ,
 
     alert('Your request has been sent to the admin.Kindly check your email for future updates!');
 
@@ -61,20 +55,4 @@ this.model = {
  }
 }
 
-
-//  }
-// app.post('/submit-inventory', (req, res) => {
-//   const { userName, request, employeeId, DateApplied, SoftwareName, OtherSoftware, comments } = req.body;
-
-//   // Perform DB insert logic here:
-//   db.query('INSERT INTO inventory (userName, request, employeeId, DateApplied, SoftwareName, OtherSoftware, comments) VALUES (?, ?, ?, ?, ?, ?, ?)', 
-//     [userName, request, employeeId, DateApplied, SoftwareName, OtherSoftware, comments], 
-//     (err, result) => {
-//       if (err) {
-//         res.status(500).send('Error saving to database');
-//       } else {
-//         res.send('Success!');
-//       }
-//     });
-// });
 

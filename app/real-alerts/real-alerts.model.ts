@@ -1,11 +1,11 @@
 export interface RealAlertsModel{
 
-id: number;
-    assetId:number;
+   id:string;
+    assetId:string;
     assetName:string;
-   currentStock:number;
-    threshold:number;
+   currentStock:string;
+    threshold:string;
     level:string;
     message:string;
-    createdAt:Date;
+    createdAt:string;
 }

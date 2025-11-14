@@ -63,10 +63,8 @@ Status:string | null=null;
 
   {
 
-  // console.log(this.assets);
-  // console.log ('Submitted asset: ' + this.assets;
-
-  const updateDisposedAssetRequest: UpdateDisposeAssetRequest//interface 
+  
+  const updateDisposedAssetRequest: UpdateDisposeAssetRequest
   =
  
   {
@@ -83,7 +81,7 @@ Status:string | null=null;
     Status:this.disposeDetails?.status??'',
   };  
 
-  //pass this object to a service
+  
   if (this.Id)
   {
   const editDisposedAssetSubscription = this.edisposeService.updateDisposedAssets(this.Id, updateDisposedAssetRequest).subscribe({
@@ -93,7 +91,8 @@ Status:string | null=null;
    
   }  );
   }
-  }
+}
+
 
   onDelete(): void
 {

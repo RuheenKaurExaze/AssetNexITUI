@@ -29,7 +29,6 @@ goTo:any;
 
    ngOnInit(): void 
    {
-    // this. assets$=this.inventoryService.getAllAssets();
     this.hardware$=this.hardwareService.getAllHardware().pipe(map(data =>data??[]));
 
    }

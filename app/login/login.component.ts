@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
-import { LoginModel } from '../models/login.model';
+import { LoginModel } from './models/login.model';
 
 
 
@@ -32,21 +32,4 @@ export class LoginComponent {
   {
    this.router.navigateByUrl('/dashboard');
   }
-
-
-  // onSubmit() {
-  //   this.authService.login({ email: this.email, password: this.password })
-  //     .subscribe({
-  //       next: () => this.router.navigate(['/dashboard']),
-  //       error: err => this.error = 'Invalid email or password'
-  //     });
-  // }
-
-
 }
-
-//   this.http.get('api/protected', {
-
-//   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-
-// });

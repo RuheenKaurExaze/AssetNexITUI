@@ -18,9 +18,9 @@ constructor( private http : HttpClient) { }
 
 getSoftwareLicense() : Observable<SoftwareLicense[]>//get all
 
-  {
-// return this.http.get<SoftwareLicense[]>(`${environment.apibaseUrl}/api/softwarelicense`);
-return this.http.get<SoftwareLicense[]>('/softwarelicense');
+{
+ return this.http.get<SoftwareLicense[]>(`${environment.apibaseUrl}/api/softwarelicense`);
+// return this.http.get<SoftwareLicense[]>('/softwarelicense');
 
   }
 

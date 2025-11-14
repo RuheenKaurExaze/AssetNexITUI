@@ -1,60 +1,59 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-interface LoginResponse {
-  token: string;
-  expiration: string;
-}
-
-interface RegiterRequest{
-email:string;
-password:string;
-
-}
-
-interface RegisterResponse{
-errors:string[];
-message?:string;
-success:boolean;
-
-}
+import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7195'; // your API base URL
+ 
 
   constructor(private http: HttpClient) {}
 
-  login(request: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/api/Auth/login`, request);
-  }
 
-  register(email:string, password:string):Observable<RegisterResponse>{
-    return this.http.post<RegisterResponse>(`${this.apiUrl}/api/Auth/register`, {email,password});
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
-  isAuthenticated(): boolean {
-    return !!this.getToken();
+  login(request: any): Observable<any> {
+    return this.http.post(`${environment.apibaseUrl}/api/Auth/login`, request).pipe(
+      tap((response: any) => {
+        if (response && response.token) {
+          localStorage.setItem('jwtToken', response.token);
+          localStorage.setItem('tokenExpiry', response.expiration);
+        }
+      })
+    );
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('tokenExpiry');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('jwtToken');
+  }
+
+  isAuthenticated(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    const expiry = localStorage.getItem('tokenExpiry');
+    if (!expiry) return false;
+
+    return new Date(expiry) > new Date();
+  }
+
+  getRefreshToken():string| null{
+    return localStorage.getItem('refreshToken');
+  }
+
+  isRefreshed():boolean{
+    const refreshToken= this.getRefreshToken();
+    if(!refreshToken) return false;
+
+    const refreshExpiry= localStorage.getItem('refreshTokenExpiry');
+    if(!refreshExpiry) return false;
+
+    return new Date(refreshExpiry) > new Date();
+
   }
 }
-
-
-
-
