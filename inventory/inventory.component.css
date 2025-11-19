@@ -19,6 +19,7 @@ p-table {
     font-size: 16px;
     font-weight: 100rem;
     color: black;
+    margin-top:100px;
 }
 
 .custom-table {
@@ -38,6 +39,7 @@ tr:hover {
     color: rgb(250, 247, 247);
     row-gap: 10px;
     gap: 10px;
+    margin-top:-40px;
 }
 
 button:hover {
@@ -90,6 +92,8 @@ button {
     align-items: flex-start;
     margin-left: 10px;
     margin-right: -20px;
+    margin-top:-10px;
+
 }
 
 .logo {
@@ -148,5 +152,5 @@ button {
 }
 
 .nav-links a:hover {
-    color: #f0842c;
+    color: #ffffffff;
 }

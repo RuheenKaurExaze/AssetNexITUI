@@ -12,6 +12,9 @@ td {
     margin-top: 30px;
 }
 
+table{
+    margin-top:100px;
+}
 h3 {
     text-align: center;
     font-size: 18px;
@@ -42,11 +45,12 @@ tr:hover {
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: -40px;
     margin-left: 1000px;
     color: rgb(250, 247, 247);
     row-gap: 10px;
     gap: 10px;
+
 }
 
 button:hover {
@@ -100,6 +104,7 @@ button {
     align-items: flex-start;
     margin-left: 10px;
     margin-right: -20px;
+    margin-top:-10px;
 }
 
 .logo {
@@ -109,7 +114,7 @@ button {
 }
 
 .logo a .highlight {
-    color: #f0842c;
+    color: #ffffffff;
 }
 
 .logo a {
@@ -117,7 +122,7 @@ button {
 }
 
 .highlight {
-    color: #0c0c0c;
+    color: #ffffffff;
 }
 
 .below {
@@ -158,5 +163,5 @@ button {
 }
 
 .nav-links a:hover {
-    color: #ffffff;
+    color: #ffffffff;
 }

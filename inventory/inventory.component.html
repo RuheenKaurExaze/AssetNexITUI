@@ -34,15 +34,14 @@
 
     <h3><u>ASSET INVENTORY LIST</u></h3>
     <div class="buttonrow">
+        <button type="button" class="btn btn-dark" (click)="goToDashboard()" routerlink="/dashboard"><img src="assets/images/image (17).svg">To Dashboard</button>
 
-        <button type="button" class="btn btn-primary" routerlink="/assets/add" (click)="goToAddAssets()"><img src="assets/images/image (13).svg">Add Asset</button>
+        <button type="button" class="btn btn-primary" routerlink="/assets/add" (click)="goToAddAssets()"><img src="assets/images/image (18).svg">Add Asset</button>
 
-        <button type="button" class="btn btn-dark" (click)="goToDashboard()" routerlink="/dashboard"><img src="assets/images/image (10).svg">To Dashboard</button>
-
-        <button type="button" class="btn btn-primary" (click)="goToDeleteAssets()" routerLink="/assets/delete"><img src="assets/images/image (12).svg">Remove Asset</button>
+        <button type="button" class="btn btn-primary" (click)="goToDeleteAssets()" routerLink="/assets/delete"><img src="assets/images/image (16).svg">Remove Asset</button>
     </div>
 
-    <p-table class="custom-table" [value]="assets$ | async " [paginator]="true" [rows]="10">
+    <p-table class="custom-table" [value]="assets$ | async " [paginator]="true" [rows]="50">
         <ng-template #header>
 
             <tr>

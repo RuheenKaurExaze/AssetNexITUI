@@ -15,28 +15,29 @@ export class AuthService {
   login(request: any): Observable<any> {
     return this.http.post(`${environment.apibaseUrl}/api/Auth/login`, request).pipe(
       tap((response: any) => {
-        if (response && response.token) {
-          localStorage.setItem('jwtToken', response.token);
-          localStorage.setItem('tokenExpiry', response.expiration);
+        if (response && response.token) 
+          {
+          localStorage.setItem('accessToken', response.token);
+          localStorage.setItem('expiration', response.expiration);
         }
       })
     );
   }
 
   logout(): void {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('tokenExpiry');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('expiration');
   }
 
   getToken(): string | null {
-    return localStorage.getItem('jwtToken');
+    return localStorage.getItem('accessToken');
   }
 
   isAuthenticated(): boolean {
     const token = this.getToken();
     if (!token) return false;
 
-    const expiry = localStorage.getItem('tokenExpiry');
+    const expiry = localStorage.getItem('expiration');
     if (!expiry) return false;
 
     return new Date(expiry) > new Date();
@@ -56,4 +57,9 @@ export class AuthService {
     return new Date(refreshExpiry) > new Date();
 
   }
+
+
+
 }
+
+

@@ -14,9 +14,11 @@
             <h4 id="scrollspyHeading1">First heading</h4>
             <div class="sidebar" [class.collapsed]="isSidebarCollapsed">
                 <ul class="sidebar-menu">
+
                     <li>
                         <a (click)="goTo('/assets')"> <img src="assets/images/image.svg.svg"> ASSETS INVENTORY</a>
                     </li>
+
                     <li>
                         <a (click)="goTo('/ewaste/disposable-assets')"><img src="assets/images/image.svg.svg"> E-DISPOSAL INVENTORY</a>
                     </li>
@@ -47,6 +49,7 @@
                     <li>
                         <a (click)="goTo('/logout')"><img src="assets/images/image.svg.svg"> LOGOUT</a>
                     </li>
+
                 </ul>
 
                 <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" (click)="toggleSidebar()">
@@ -72,62 +75,93 @@
             </div>
         </div>
 
+        <div class="metrics-row">
+
+            <div class="metrics">
+
+                <img src="assets/images/image (15).svg">
+                <p>
+                    <span class="diff">Assets Deployed</span>= <b>70 </b></p>
+            </div>
+
+            <div class=" metrics ">
+
+                <img src="assets/images/image (15).svg ">
+                <p>
+                    <span class="diff">Assets In Repair</span> = <b>12</b></p>
+            </div>
+
+            <div class="metrics ">
+                <img src="assets/images/image (15).svg ">
+                <p>
+                    <span class="diff">Assets In Store </span>=<b>100</b> </p>
+            </div>
+
+            <div class="metrics ">
+
+                <img src="assets/images/image (15).svg ">
+                <p><span class="diff">Operating Systems</span>=<b> 40</b></p>
+            </div>
+
+        </div>
+
+
         <router-outlet></router-outlet>
 
         <div class="charts-container ">
 
-            <p-chart *ngIf="assetChartData" type="doughnut" class="pie" [data]="assetChartData" [options]="assetChartOptions">
-            </p-chart>
+            <div class="chart-row">
+                <p-chart *ngIf="assetChartData " type="pie" class="pie " [data]="assetChartData " [options]="assetChartOptions " class="h-[30rem] "></p-chart>
 
-            <p-chart *ngIf="eWasteChartData" type="doughnut" class="pie" [data]="eWasteChartData" [options]="eWasteChartOptions">
-            </p-chart>
+                <p-chart *ngIf="eWasteChartData " type="line" [data]="eWasteChartData " [options]="eWasteChartOptions " class="h-[30rem] "></p-chart>
 
-            <p-chart *ngIf="assetChartData" type="line" [data]="assetChartData" [options]="assetChartOptions" class="h-[30rem]" />
+                <p-chart *ngIf="assetChartData" type="radar" [data]="assetChartData " [options]="assetChartOptions " class="h-[30rem] "></p-chart>
 
-            <p-chart *ngIf="hardwareChartData" type="bar" class="bar" [data]="hardwareChartData" [options]="hardwareChartOptions">
-            </p-chart>
+                <p-chart *ngIf="hardwareChartData" type="bar" [data]="hardwareChartData " [options]="hardwareChartOptions " class="h-[30rem] "> </p-chart>
 
-            <p-chart type="radar" *ngIf="assetChartData" [data]="assetChartData" [options]="assetChartOptions" class="w-full md:w-[30rem] " />
+                <p-chart *ngIf="assetChartData " type="pie" [data]="assetChartData " [options]="assetChartOptions " class="w-full md:w-[30rem] "></p-chart>
 
-            <p-chart *ngIf="supportChartData " type="doughnut " [data]="supportChartData " [options]="supportChartOptions " class="doughnut ">
-            </p-chart>
+                <p-chart *ngIf="supportChartData " type="bar" [data]=" supportChartData" [options]="supportChartOptions " class="w-full md:w-[30rem]">
+                </p-chart>
 
-            <p-chart *ngIf="softwareChartData " type="doughnut " class="pie " [data]="softwareChartData " [options]="softwareChartOptions "></p-chart>
+                <p-chart *ngIf="softwareChartData " type="line " [data]="softwareChartData " [options]="softwareChartOptions " class="h-[30rem] "></p-chart>
+
+            </div>
         </div>
 
         <div class="card-grid-container ">
-            <div class="card-body "><img src="assets/images/image (3).svg">
+            <div class="card-body "><img src="assets/images/image (3).svg ">
                 <h2>Asset Inventory</h2>
                 <p>Get a comprehensive view of the all the deployed assets in a single click. Quick assessment of asset distribution, status, and allocation across your organization.
                 </p>
             </div>
 
-            <div class="card-body "><img src="assets/images/image (4).svg">
+            <div class="card-body "><img src="assets/images/image (4).svg ">
                 <h2>E-Waste Disposal</h2>
                 <p>Effortlessly manage your e-waste disposal process with our streamlined solution. Track, Schedule,document the disposal of electronic assets ensuring compliance with environmental regulations.
                 </p>
             </div>
 
-            <div class="card-body "><img src="assets/images/image (5).svg">
+            <div class="card-body "><img src="assets/images/image (5).svg ">
                 <h2>IT System Integration</h2>
                 <p>Seamlessly integrate AssetNexIT with your existing IT systems. Our platform supports API integrations, allowing you to synchronize data ,enhance your asset management workflows.
                 </p>
             </div>
 
-            <div class="card-body "><img src="assets/images/image (6).svg">
+            <div class="card-body "><img src="assets/images/image (6).svg ">
                 <h2>Support Desk</h2>
                 <p>Enhance your IT support operations with our integrated support desk. Track and manage support tickets, monitor response times, and ensure timely resolution of IT issues.
                 </p>
             </div>
 
             <div class="card-body ">
-                <img src="assets/images/image (7).svg">
+                <img src="assets/images/image (7).svg ">
                 <h2>Reporting & Analytics</h2>
                 <p>Gain valuable insights into your asset management processes with our robust reporting and analytics features
                 </p>
             </div>
 
-            <div class="card-body "><img src="assets/images/image (8).svg">
+            <div class="card-body "><img src="assets/images/image (8).svg ">
                 <h2>Security & Compliance</h2>
                 <p>Ensure the security and compliance of your IT assets with AssetNexIT.Allows for a quick and safe process that ensures asset well-being.</p>
             </div>
@@ -157,7 +191,7 @@
 
     <div class="footer ">
         <div class="bottom ">
-            AssetNexIT <img src="assets/images/image (9).svg"> 2025 All Rights Reserved | Terms of Service | Privacy Policy | Contact Us | Cookies
+            AssetNexIT <img src="assets/images/image (9).svg "> 2025 All Rights Reserved | Terms of Service | Privacy Policy | Contact Us | Cookies
         </div>
     </div>
 </body>

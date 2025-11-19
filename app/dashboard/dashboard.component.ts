@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import {ChartModule} from 'primeng/chart';
+import {DoughnutController, Chart, ArcElement, registerables} from 'chart.js';
+
 import { InventoryService } from '../../inventory/services/inventory.service';
 
 @Component({
@@ -31,6 +33,8 @@ softwareChartOptions:any;
 
   ngOnInit() {
     
+    Chart.register(DoughnutController, ArcElement);
+
     this.assetChartData = {
       labels: ['In Use', 'Available', 'Disposed'],
       datasets: [

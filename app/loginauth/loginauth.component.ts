@@ -1,6 +1,3 @@
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -35,11 +32,6 @@ export class LoginauthComponent implements OnInit {
     this.router.navigateByUrl(route);
   }
 
-  goToLoginRegister()
-  {
-    this.router.navigateByUrl('/login/register');
-  }
-
   logout(): void {
     this.authService.logout();
     this.router.navigateByUrl('/landing');
@@ -56,9 +48,7 @@ export class LoginauthComponent implements OnInit {
       this.router.navigateByUrl(this.returnUrl);
       return;
     }
-
-
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 login(): void {
   this.error = '';
@@ -85,7 +75,7 @@ login(): void {
     next: (res) => {
       console.log('Login successful', res);
 
-      if (res?.token) {
+      if (res?.accessToken) {
         this.router.navigateByUrl(this.returnUrl);
       } else {
         this.error = 'Unexpected response. Token missing.';
