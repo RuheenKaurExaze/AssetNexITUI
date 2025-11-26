@@ -6,32 +6,41 @@
 
     <ul class="nav-links">
         <li>
-            <a (click)="goTo('/assets/explore')" routerLink="/assets/explore"><img src="assets/images/image (1).svg">EXPLORE></a>
+            <a routerLink="/assets/explore"><img src="assets/images/image (1).svg"> EXPLORE</a>
         </li>
         <li>
-            <a (click)="goTo('/assets/support')" routerLink="/assets/support"><img src="assets/images/image (2).svg">SUPPORT DESK </a>
+            <a routerLink="/assets/support"><img src="assets/images/image (2).svg"> SUPPORT DESK</a>
         </li>
         <li>
-            <a (click)="goTo('/about')" routerLink="/about"><img src="assets/images/image (3).svg">ABOUT </a>
+            <a routerLink="/about"><img src="assets/images/image (3).svg"> ABOUT</a>
         </li>
     </ul>
 </div>
 
 <div class="login-container">
+
     <h4>LOGIN</h4>
+
+    <!-- Admin/User Toggle -->
     <label class="switch">
       <input type="checkbox" [(ngModel)]="isAdmin" name="isAdmin">
       <span class="slider"></span>
     </label>
+
     <p>{{ isAdmin ? 'Admin Login' : 'User Login' }}</p>
+
+    <!-- Login Form -->
     <form (ngSubmit)="login()" #loginForm="ngForm">
         <div>
             <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required class="form-control" />
         </div>
+
         <div>
             <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required class="form-control" />
         </div>
+
         <div *ngIf="error" class="text-danger mt-2">{{ error }}</div>
+
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 

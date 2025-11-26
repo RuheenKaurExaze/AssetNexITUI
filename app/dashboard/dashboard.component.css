@@ -275,15 +275,22 @@ body {
     justify-content: center;
 }
 
+.metrics:hover {
+    transform: translateY(-8px);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition-timing-function: linear-ease;
+}
+
 .metrics b {
     font-size: 22px;
 }
+
 .metrics:nth-child(odd) {
-    background-color: #ddcfc6ff;
+    background-color: rgb(235, 111, 34);
 }
 
 .metrics:nth-child(even) {
-    background-color: #ada6a2ff;
+    background-color: rgb(202, 88, 21);
 }
 
 .metrics svg {

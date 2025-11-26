@@ -1,6 +1,10 @@
 export interface LoginModel{
     
-    Username : string,
-    Password : string,
+
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;
+
+
   
 }

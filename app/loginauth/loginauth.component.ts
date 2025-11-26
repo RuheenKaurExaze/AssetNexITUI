@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -12,24 +12,27 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./loginauth.component.css']
 })
 export class LoginauthComponent implements OnInit {
+
   email: string = '';
   password: string = '';
-  error = '';
-  loading = false;
-  isAdmin: boolean = false;
-  returnUrl = '/dashboard';
+  error: string = '';
+  loading: boolean = false;
+  isAdmin:boolean = false;
+  selectedRole = 'admin';
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
-  goToLanding(): void {
-    this.router.navigateByUrl('/landing');
+
+
+  private isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 
-  goTo(route: string): void {
-    this.router.navigateByUrl(route);
+  goToLanding(): void {
+    this.router.navigateByUrl('/landing');
   }
 
   logout(): void {
@@ -37,67 +40,121 @@ export class LoginauthComponent implements OnInit {
     this.router.navigateByUrl('/landing');
   }
 
-  private isValidEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
+  login(): void {
+    this.error = '';
+    this.loading = true;
 
-  ngOnInit(): void {
-   
-    if (this.authService.isAuthenticated()) {
-      this.router.navigateByUrl(this.returnUrl);
+    this.selectedRole = this.isAdmin ? 'admin' : 'user';
+
+
+    if (!this.email || !this.password) {
+      this.error = 'Please fill in all required fields';
+      this.loading = false;
       return;
     }
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
-  }
-login(): void {
-  this.error = '';
-  this.loading = true;
 
-  if (!this.email || !this.password) {
-    this.error = 'Please fill in all required fields';
-    this.loading = false;
-    return;
-  }
-
-  if (!this.isValidEmail(this.email)) {
-    this.error = 'Please enter a valid email';
-    this.loading = false;
-    return;
-  }
-
-  const request = {
-    email: this.email.trim(),
-    password: this.password.trim()
-  };
-
-  this.authService.login(request).subscribe({
-    next: (res) => {
-      console.log('Login successful', res);
-
-      if (res?.accessToken) {
-        this.router.navigateByUrl(this.returnUrl);
-      } else {
-        this.error = 'Unexpected response. Token missing.';
-      }
-
+    if (!this.isValidEmail(this.email)) {
+      this.error = 'Please enter a valid email';
       this.loading = false;
-    },
-    error: (err) => {
-      console.error('Login failed', err);
-      if (err.status === 401) {
-        this.error = 'Invalid email or password';
-      } else if (err.error?.message) {
-        this.error = err.error.message;
-      } else {
-        this.error = 'Login failed. Please try again.';
-      }
-
-      this.loading = false;
+      return;
     }
-  });
+
+    const request = {
+      email: this.email.trim(),
+      password: this.password.trim()
+    };
+
+    this.authService.login(request).subscribe({
+      next: (res) => {
+console.log('Login response:', res);
+localStorage.setItem('accessToken', res.accessToken);
+localStorage.setItem('refreshToken', res.refreshToken);
+localStorage.setItem('tokenExpiry', res.expiration);
+localStorage.setItem('role', res.role);
+        if (!res.accessToken) {
+          this.error = 'Unexpected server response. Token missing.';
+          this.loading = false;
+          return;
+          
+        }
+
+        // Save role
+        localStorage.setItem('role', res.role);
+
+        // Clean redirect — NO returnUrl mess
+        if (res.role === 'Admin') {
+          this.router.navigateByUrl('/dashboard');   // FIXED
+        } else if (res.role === 'User') {
+          this.router.navigateByUrl('/dashboarduser');  // FIXED
+        }
+
+        this.loading = false;
+      },
+
+      error: (err) => {
+        console.error('Login failed', err);
+
+        if (err.status === 401) {
+          this.error = 'Invalid email or password';
+        } else {
+          this.error = 'Login failed. Please try again.';
+        }
+
+        this.loading = false;
+      }
+    });
+  }
+
+//problem is still the same, once logged in the page wont take to login auth to sign in again->
+// //also admin credential is showing valid in user toggle
+
+//
+
+  // ngOnInit(): void {
+  //   // Auto redirect if logged in
+  //   const role = localStorage.getItem('role');
+
+  //   if (role === 'Admin') {
+  //     this.router.navigateByUrl('/dashboard');
+  //     return;
+  //   }
+
+  //   if (role === 'User') {
+  //     this.router.navigateByUrl('/dashboarduser');
+  //     return;
+  //   }
+  // }
+
+
+
+ngOnInit(): void {
+  // Prevent auto login if the token is expired or invalid
+  if (!this.authService.isAuthenticated()) {
+    localStorage.removeItem('role');
+    localStorage.removeItem('accessToken');
+  }
+
+  if (this.authService.isAuthenticated()) {
+    const role = localStorage.getItem('role');
+
+    if (role === 'Admin') {
+      this.router.navigateByUrl('/dashboard');
+    } else if (role === 'User') {
+      this.router.navigateByUrl('/dashboarduser');
+    }
+    return;
+  }
+}
+
 }
 
 
 
-}
+// isAuthenticated() returned TRUE due to old token
+
+// Auto redirect to dashboard triggered
+
+// Fix
+// ✔ Clear invalid/expired tokens
+// ✔ Validate token expiry
+// ✔ Properly handle ngOnInit() login logic

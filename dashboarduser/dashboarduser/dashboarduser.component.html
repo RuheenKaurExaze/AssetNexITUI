@@ -1,0 +1,112 @@
+<div class="nav-left">
+    <div class="navbar">
+        <div class="logo-wrapper">
+            <h1 class="logo" (click)="goToLanding()">AssetNex<span class="highlight">IT</span> </h1>
+            <p class="below">TRACK | MANAGE | DISPOSE</p>
+        </div>
+        <ul class="nav-links">
+            <li><a (click)="goTo('/assets/explore')">EXPLORE <img src="assets/images/image (1).svg"></a></li>
+            <li><a (click)="goTo('/assets/support')">SUPPORT DESK <img src="assets/images/image (2).svg"></a></li>
+            <li>
+                <a (click)="goTo('/about')">ABOUT <img src="assets/images/image (3).svg"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="welcome"><a>User's Assets</a></div>
+
+<div class="sidebar border-end">
+    <div class="sidecolor">
+        <div class="sidebar-header border-bottom">
+            <div class="sidebar-brand">Hello, User!</div>
+        </div>
+
+        <ul class="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link mt-5" href="https://coreui.io">
+                    <i class="nav-icon cil-cloud-download"></i> MY ASSETS</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link mt-3" href="#">
+                    <i class="nav-icon cil-speedometer"></i>ASSET REQUEST
+                    <span class="badge bg-primary ms-auto">NEW</span>
+                </a>
+            </li>
+
+            <li class="nav-item nav-group show">
+                <a class="nav-link nav-group-toggle" class="nav-item mt-5"> SUPPORT
+            </a>
+
+                <ul class="nav-group-items ">
+                    <li class="nav-item mt-3 ">
+                        <a class="nav-link " href="# ">
+                            <span class="nav-icon "><span class="nav-icon-bullet "></span></span>RAISE TICKET
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link " href="# ">
+                            <span class="nav-icon "><span class="nav-icon-bullet "></span></span>TRACK TICKET
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item mt-3 ">
+                <a class="nav-link ">
+                    <i class="nav-icon cil-cloud-download "></i> PROFILE SETTINGS</a>
+            </li>
+
+            <li class="nav-item mt-3 ">
+                <a class="nav-link " routerLink="/help ">
+                    <i class=" nav-icon cil-speedometer "></i> HELP</a>
+            </li>
+            <li class="nav-item mt-3 ">
+                <a class="nav-link " routerLink="/login/logout ">
+                    <i class="nav-icon cil-speedometer "></i> LOGOUT</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="card-grid-container ">
+    <div class="card-body "><img src="assets/images/image (3).svg ">
+        <h2>Asset Inventory</h2>
+        <p>Get a comprehensive view of the all the deployed assets in a single click. Quick assessment of asset distribution, status, and allocation across your organization.
+        </p>
+    </div>
+
+    <div class="card-body "><img src="assets/images/image (4).svg ">
+        <h2>E-Waste Disposal</h2>
+        <p>Effortlessly manage your e-waste disposal process with our streamlined solution. Track, Schedule,document the disposal of electronic assets ensuring compliance with environmental regulations.
+        </p>
+    </div>
+
+    <div class="card-body "><img src="assets/images/image (5).svg ">
+        <h2>IT System Integration</h2>
+        <p>Seamlessly integrate AssetNexIT with your existing IT systems. Our platform supports API integrations, allowing you to synchronize data ,enhance your asset management workflows.
+        </p>
+    </div>
+
+    <div class="card-body "><img src="assets/images/image (6).svg ">
+        <h2>Support Desk</h2>
+        <p>Enhance your IT support operations with our integrated support desk. Track and manage support tickets, monitor response times, and ensure timely resolution of IT issues.
+        </p>
+    </div>
+
+    <div class="card-body ">
+        <img src="assets/images/image (7).svg ">
+        <h2>Reporting & Analytics</h2>
+        <p>Gain valuable insights into your asset management processes with our robust reporting and analytics features
+        </p>
+    </div>
+
+    <div class="card-body "><img src="assets/images/image (8).svg ">
+        <h2>Security & Compliance</h2>
+        <p>Ensure the security and compliance of your IT assets with AssetNexIT.Allows for a quick and safe process that ensures asset well-being.</p>
+    </div>
+</div>

@@ -32,6 +32,8 @@ import { RouterModule } from '@angular/router';
 import { LiveMapComponent } from '../live-tracking/livemap.component';
 import { TokenInterceptor } from './auth/auth.interceptor';
 import { LogoutComponent } from '../logout/logout.component';
+import { DashboarduserComponent } from '../dashboarduser/dashboarduser/dashboarduser.component';
+import { UsersupportComponent } from '../user/usersupport/usersupport.component';
 export const appRoutes: Routes =
  [
 
@@ -102,17 +104,22 @@ export const appRoutes: Routes =
    },
 
 
-       { 
+   { 
     path: 'landing/navbar',
     component: NavbarComponent
    },
 
-
   { 
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate:[authGuard],
    },
 
+{
+  path:'dashboarduser',
+  component:DashboarduserComponent,
+canActivate:[authGuard],
+},
   { 
     path: '', 
     redirectTo: 'landing', 
@@ -134,6 +141,12 @@ export const appRoutes: Routes =
      component:UinewComponent
    },
 
+   {
+    path:'usersupport',
+    component:UsersupportComponent,
+
+   },
+   
    {
       path:'assets/delete',
       component:DeleteAssetComponent

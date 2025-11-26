@@ -20,8 +20,10 @@ import { InventoryService } from '../../inventory/services/inventory.service';
 export class DashboardComponent{
 
   constructor(private router: Router , private inventoryService: InventoryService) {}
-  assetChartData: any;
-  assetChartOptions: any;
+  
+  
+assetChartData: any;
+assetChartOptions: any;
 eWasteChartData: any;
 eWasteChartOptions: any;
 hardwareChartData:any;
